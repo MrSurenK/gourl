@@ -1,2 +1,4 @@
 # gourl
-A url shortener built with Golang
+A url shortener built with Golang + React
+
+...In Progress...
