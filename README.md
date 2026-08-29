@@ -3,11 +3,11 @@ A url shortener built with Golang + React
 
 ## Design Scope
 
-1.__Maximum Lifetime Write Operations:__ _5 million_ (EC2 instance has to be shared with other projects and this application should not hog the limited memory space when using postgresql lookup index) 
+1. __Maximum Lifetime Write Operations:__ _5 million_ (EC2 instance has to be shared with other projects and this application should not hog the limited memory space when using postgresql lookup index) 
 
-2.__Allowed characters:__ `[0-9],[a-z],[A-Z]` 
+2. __Allowed characters:__ `[0-9],[a-z],[A-Z]` 
 
-3.__Logging Required:__
+3. __Logging Required:__
     - Creation Logs -> ip of creator for protection against bad actors
     - Redirect Failures 
     - System Errors
