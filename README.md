@@ -2,13 +2,11 @@
 A url shortener built with Golang + React
 
 ## Design Scope
-
 1. __Maximum Lifetime Write Operations:__ _5 million_ (EC2 instance has to be shared with other projects and this application should not hog the limited memory space when using postgresql lookup index) 
 
 2.__Allowed characters:__ `[0-9],[a-z],[A-Z]` 
 
 3.__Logging Required:__
-    
     - Creation Logs -> ip of creator for protection against bad actors
     - Redirect Failures 
     - System Errors
@@ -18,14 +16,13 @@ A url shortener built with Golang + React
         - Platform clicked from (eg. Facebook, X, Reddit or unknown) 
 
 4. __Security:__ 
-    
     - URL validation -> Make sure its not a malicious site
     - Abuse prevention -> Rate limiter
     - Phishing reputation checks via external api
 
 ## High level Design
 
-## 302 vs 304 Redirect
+### 302 vs 304 Redirect
 
 ### Hashing or Encoding Algorithm
 
@@ -39,7 +36,7 @@ __Schema:__
 
 ```mermaid
 ---
-Db Schems
+Db Schemas
 ---
 erDiagram
     URL
