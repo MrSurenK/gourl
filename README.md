@@ -8,7 +8,6 @@ A url shortener built with Golang + React
 2. __Allowed characters:__ `[0-9],[a-z],[A-Z]` 
 
 3. __Logging Required:__
-    - Creation Logs -> ip of creator for protection against bad actors
     - Redirect Failures 
     - System Errors
     - Basic Analytics
@@ -50,8 +49,8 @@ __Schema:__
 Db Schemas
 ---
 erDiagram
-    USER ||--o{ URL : places
-        
+    USER ||--o{ SHORT_URL : places
+    SHORT_URL ||--0{ LINK_ANALYTICS :places    
 ```
 
 ## Security
