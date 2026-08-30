@@ -50,7 +50,8 @@ Db Schemas
 ---
 erDiagram
     USER ||--o{ SHORT_URL : places
-    SHORT_URL ||--0{ LINK_ANALYTICS :places    
+    SHORT_URL ||--o{ LINK_ANALYTICS :places   
+ 
 ```
 
 ## Security
