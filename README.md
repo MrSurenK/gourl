@@ -49,9 +49,35 @@ __Schema:__
 Db Schemas
 ---
 erDiagram
-    USER ||--o{ SHORT_URL : places
-    SHORT_URL ||--o{ LINK_ANALYTICS :places   
- 
+    USER ||--o{ SHORT_URL : creates
+    USER {
+        bigint id PK  "Unique id of each account for lookup"
+        varchar(100) username
+        varchar(100) email
+        varchar(100) name
+        boolean isDeleted 
+        varchar(20) status "Health status of the account such as Healthy,Review,Blacklisted"
+        timestamp created_at
+        timestamp last_accessed
+    }
+    SHORT_URL ||--o{ LINK_ANALYTICS :has   
+    SHORT_URL {
+        bigint id PK
+        varchar(7) short_url UK "Unique and not null"
+        text long_url "Cleaned url to redirect to"
+        timestamp created_at
+        bigint created_by FK "Id of the user that created the short url"
+        timestamp expiry "Fixed expiry date for unused links for cleanup job. Clean delete up will cascade down to related link analytics"
+        timestamp last_accessed "Track of the last time the url was excessed by service" 
+        boolean isBlacklisted "health monitor of the link to catch phishing or malicious links"
+    }
+    LINK_ANALYTICS {
+        bigint short_url_id FK,PK
+        varchar(20) dimension_type PK "country,device, referrer"
+        varchar(255) dimension_value PK "sg, mobile, facebook.com"
+        bigint click_count "Default 1" 
+        date time_bucket PK "Tells you how many clicks aggregated by day"
+    } 
 ```
 
 ## Security
